@@ -1,8 +1,6 @@
 
-var noOfDrumButtons = document.querySelectorAll(".drum").length;
-
-
-
+var noOfDrumButtons = $(".drum").length;
+// console.log(noOfDrumButtons);
 
 function makeSound(letter){
 
@@ -44,27 +42,25 @@ function makeSound(letter){
 
     default:
   };
-}
+};
 
 function animation(letter){
-  var activeButton = document.querySelector("." + letter);
+  var activeButton = $("." + letter);
 
-  activeButton.classList.add("pressed");
+  activeButton.addClass("pressed");
 
   setTimeout(function(){
-    activeButton.classList.remove("pressed");
-  }, 100)
+    activeButton.removeClass("pressed");
+  }, 100);
 
-}
+};
 
-
-for(var i =0;i<noOfDrumButtons;i++ ){
-  document.querySelectorAll(".drum")[i].addEventListener("click", function(){
+  $(".drum").click(function(){
     var letter = this.innerHTML;
     makeSound(letter);
     animation(letter);
   });
-};
+
 
 document.addEventListener("keypress", function(event){
   var key = event.key;
